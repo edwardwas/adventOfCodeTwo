@@ -8,7 +8,9 @@
 module Problem05 (partA, partB, partBCine) where
 
 import Control.Applicative
+import Control.Monad
 import System.Console.ANSI
+import Control.Exception
 import Control.Lens
 import Data.ByteString.Base16
 import Data.List
@@ -73,7 +75,14 @@ mixPassword pw = zipWith (flip fromMaybe) (getPassword pw)
 
 partA = print $ partAWithInput doorId
 partB = print $ head $ filter filledPassword $ guesses $ makeHashses doorId
+partBCine = bracket hideCursor (const run) (const showCursor)
+    where run = do
+            res <- cinematic 20 mempty (makeHashses doorId) 0
+            putStrLn ""
+            print res
 
-partBCine = mapM_ showHelper $ zipWith mixPassword (guesses g) g
-    where g = makeHashses doorId
-          showHelper s = clearLine >> putStrLn s  >> cursorUp 1
+cinematic :: Int -> Password -> [String] -> Int -> IO Password
+cinematic skp pw (g:gs) n = do
+    let newPw = if take 5 g == "00000" then addGuess pw (readDef (-1) [g !! 5], g !! 6) else pw
+    when (0 == n `mod` skp) $ putStrLn ("Hacking: " ++ (mixPassword newPw g)) >> cursorUp 1
+    if filledPassword newPw then return newPw else cinematic skp newPw gs (n + 1 `mod` skp)
