@@ -7,8 +7,8 @@ import Data.Maybe
 import Data.Function
 import qualified Data.Map as M
 
-partA = partAString <$> readFile inputLocation
-partB = partBString <$> readFile inputLocation
+partA = readFile inputLocation >>= print . partAString
+partB = readFile inputLocation >>= print . partBString
 
 inputLocation = "input/input6.txt"
 
