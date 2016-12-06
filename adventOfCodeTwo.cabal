@@ -22,16 +22,17 @@ executable adventOfCodeTwo
     , Problem03
     , Problem04
     , Problem05
+    , Problem06
   -- other-extensions:    
   build-depends:       base >=4.8 && <4.10
-    , megaparsec
-    , containers
-    , lens
-    , mtl
-    , cryptohash
-    , bytestring
-    , base16-bytestring
-    , safe
     , ansi-terminal
+    , base16-bytestring
+    , bytestring
+    , containers
+    , cryptohash
+    , lens
+    , megaparsec
+    , mtl
+    , safe
   hs-source-dirs:      src
   default-language:    Haskell2010
