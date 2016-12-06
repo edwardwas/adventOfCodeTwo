@@ -3,6 +3,7 @@ import qualified Problem02 as P02
 import qualified Problem03 as P03
 import qualified Problem04 as P04
 import qualified Problem05 as P05
+import qualified Problem06 as P06
 
 cine = False :: Bool
 
@@ -36,3 +37,9 @@ main = do
     P05.partA
     putStr "\tPart B: "
     if cine then P05.partBCine else P05.partB
+
+    putStrLn "Day 6:"
+    putStr "\tPart A: "
+    P06.partA
+    putStr "\tPart B: "
+    P06.partB
