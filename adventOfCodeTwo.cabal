@@ -24,6 +24,7 @@ executable adventOfCodeTwo
     , Problem05
     , Problem06
     , Problem07
+    , Problem08
   -- other-extensions:    
   build-depends:       base >=4.8 && <4.10
     , ansi-terminal

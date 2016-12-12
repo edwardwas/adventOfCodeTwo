@@ -5,6 +5,7 @@ import qualified Problem04 as P04
 import qualified Problem05 as P05
 import qualified Problem06 as P06
 import qualified Problem07 as P07
+import qualified Problem08 as P08
 
 cine = False :: Bool
 
@@ -50,3 +51,9 @@ main = do
     P07.partA
     putStr "\tPart B: "
     P07.partB
+
+    putStrLn "Day 8:"
+    putStr "\tPart A: "
+    P08.partA
+    putStrLn "\tPart B: "
+    P08.partB
